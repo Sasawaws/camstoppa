@@ -10,7 +10,7 @@
 //	You should have received a copy of the GNU General Public License
 //	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-
+part=-1;
 $fn=150;
 gap=5;
 
@@ -24,8 +24,9 @@ gap=5;
 // for recent cam sets just set these to 1 to build them
 WC=0;
 BD=0;
-DMM=1;
+DMM=0;
 
+for_export(part);
 // otherwise edit the lines below to do what you want
 // if you chain camstoppas they will space automatically otherwise end with ";"
 // and space manually using translate([x,y,0) in front
@@ -72,6 +73,7 @@ if(DMM)translate([0,0,0])
 if(DMM)translate([0,30,0])
 	camstoppa_generic(width=17,thickness=11.5,length=35,cam_to_cam=50+3,bosst=0,bossl=0,name_small="DMM:5",tight=.8)	// blue #5
 	camstoppa_generic(width=25,thickness=12.5,length=41,cam_to_cam=68+4,bosst=0,bossl=0,name_small="DMM:6",tight=.8);	// silver #6 (nb dragon 1 maybe?)
+
 
 //-------------------------------------------------------------------------------------------------
 // older cams
@@ -242,3 +244,39 @@ module camstoppa_BD_zero(d1=7,d2=8,l=11.5,width=8.0,cam_to_cam=clear(13)){
 
 function clear(d)=(d<30)?(d>10?(d*1.1):(d+1)):(d+3);
 
+// clunky module for automated stl file production
+// accept it is not elegant and let the lack of export language elements take the blame!
+module for_export(part=-1){
+// BD zero - I've only seen one of these but this works for it!
+	if(part==1300)camstoppa_BD_zero();
+
+// BD camlots from 2020 onwards all cams anodized
+	if(part==1001)camstoppa_generic(width=7,thickness=10,length=23,cam_to_cam=34,name_small="C4:1",tight=.8);							// #1 camalot C4 RED
+	if(part==1002)camstoppa_generic(width=13,thickness=11,length=29,cam_to_cam=41,bosst=4,bossl=13,name_small="C4:2",tight=1.2);		// #2 camalot C4 YELLOW / GOLD
+	if(part==1003)camstoppa_generic(width=16,thickness=11.5,length=36,cam_to_cam=55,bosst=2,bossl=13,name="C4:3",tight=.8);			// #3 camalot C4 BLUE
+	if(part==1004)camstoppa_generic(width=24,thickness=11.8,length=42.2,cam_to_cam=clear(68),bosst=4,bossl=13,name="C4:4",tight=.8);	// #4 camalot C4 BLUE
+
+// BD camlot X4 and Z4 from 2021 onwards all cams anodized
+	if(part==1100.75)camstoppa_generic(width=5.5,thickness=11.25,length=20.75,cam_to_cam=clear(26.5),name_small="X4.75",tight=.8);	// BD X4 0.75 green
+	if(part==1200.5)camstoppa_generic(width=4.5,thickness=10.3,length=17.75,cam_to_cam=clear(21.1),name_small="Z405");	// BD Z4 0.5 camalot purple
+	if(part==1200.4)camstoppa_Z4_small(width=4.5,thickness=9,length=15.0,cam_to_cam=clear(16.2),name="Z404");	// BD Z4 0.4 camalot purple
+	if(part==1200.3)camstoppa_Z4_small(width=4.0,thickness=9,length=12.25,cam_to_cam=clear(13.5),name="");		// BD Z4 0.3 camalot blue
+	if(part==1200.2)camstoppa_Z4_small(width=4.0,thickness=10,length=9.4,cam_to_cam=clear(12.00),name="");		// BD Z4 0.2 camalot yellow
+	if(part==1200.1)camstoppa_Z4_small(width=4.0,thickness=10,length=8.5,cam_to_cam=clear(10.65),name="");		// BD Z4 0.1 camalot red
+
+// WC new twin axle cams ~2020
+	if(part==2003)camstoppa_generic(width=14.5,thickness=10.3,length=33.5,cam_to_cam=clear(55),name_small="WC:3",bosst=1.5,bossl=22);	// Big blue #3
+	if(part==2002)camstoppa_generic(width=13,thickness=10.3,length=28.5,cam_to_cam=clear(45.6),name_small="WC:2",bosst=1,bossl=16);	// gold 2
+	if(part==2001)camstoppa_generic(width=9,thickness=10.0,length=24.3,cam_to_cam=clear(33.5),name_small="WC:1");	// Red 1
+
+// DMM DRAGON CAMS
+// All measurements for dragon II except maybe the #6 which might be a dragon I
+// small sizes
+	if(part==3000.01)camstoppa_generic(width=7,thickness=8.1,length=13.1,cam_to_cam=clear(13.7),name_small="00",tight=.8);			// blue #00
+	if(part==3000.1)camstoppa_generic(width=7,thickness=8.2,length=15,cam_to_cam=clear(16.4),name_small="D0",tight=.8);				// silver #0
+	if(part==3001)camstoppa_generic(width=7.5,thickness=10.3,length=19.4,cam_to_cam=clear(21),name_small="D1",tight=.8);			// purple #1
+	if(part==3002)camstoppa_generic(width=7.5,thickness=10.3,length=22,cam_to_cam=clear(25.6),name_small="DMM2",tight=.8);			// green #2
+	if(part==3004)camstoppa_generic(width=15,thickness=11,length=28,cam_to_cam=38+3,bosst=0,bossl=0,name_small="DMM4",tight=.8);	// gold #4
+	if(part==3005)camstoppa_generic(width=17,thickness=11.5,length=35,cam_to_cam=50+3,bosst=0,bossl=0,name_small="DMM:5",tight=.8);	// blue #5
+	if(part==3106)camstoppa_generic(width=25,thickness=12.5,length=41,cam_to_cam=68+4,bosst=0,bossl=0,name_small="DMM:6",tight=.8);	// silver #6 (nb dragon 1 maybe?)
+	}

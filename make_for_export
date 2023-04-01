@@ -1,0 +1,25 @@
+openscad -D part=1300 -o STLs/BD_zero.stl camstoppa.scad
+
+openscad -D part=1001 -o STLs/BD_C4_1.stl camstoppa.scad
+openscad -D part=1002 -o STLs/BD_C4_2.stl camstoppa.scad
+openscad -D part=1003 -o STLs/BD_C4_3.stl camstoppa.scad
+openscad -D part=1004 -o STLs/BD_C4_4.stl camstoppa.scad
+
+openscad -D part=1100.75 -o STLs/BD_X4.75.stl camstoppa.scad
+openscad -D part=1200.5 -o STLs/BD_Z405.stl camstoppa.scad
+openscad -D part=1200.4 -o STLs/BD_Z404.stl camstoppa.scad
+openscad -D part=1200.3 -o STLs/BD_Z403.stl camstoppa.scad
+openscad -D part=1200.2 -o STLs/BD_Z402.stl camstoppa.scad
+openscad -D part=1200.1 -o STLs/BD_Z401.stl camstoppa.scad
+
+openscad -D part=2003 -o STLs/WC_3.stl camstoppa.scad
+openscad -D part=2002 -o STLs/WC_2.stl camstoppa.scad
+openscad -D part=2001 -o STLs/WC_1.stl camstoppa.scad
+
+openscad -D part=3000.01 -o STLs/DMM_00.stl camstoppa.scad
+openscad -D part=3000.1 -o STLs/DMM_0.stl camstoppa.scad
+openscad -D part=3001 -o STLs/DMM_1.stl camstoppa.scad
+openscad -D part=3002 -o STLs/DMM_2.stl camstoppa.scad
+openscad -D part=3004 -o STLs/DMM_4.stl camstoppa.scad
+openscad -D part=3005 -o STLs/DMM_5.stl camstoppa.scad
+openscad -D part=3106 -o STLs/DMM_6.stl camstoppa.scad
